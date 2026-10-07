@@ -63,7 +63,7 @@ img {
     width: min(1380px, calc(100% - 64px));
     margin: 20px auto 0;
     padding: 0 16px 0 22px;
-    border: 2px solid var(--line);
+    border: 3px solid var(--line);
     background: var(--paper);
     backdrop-filter: blur(12px);
 }
@@ -132,4 +132,87 @@ img {
 .cart-button svg {
     width: 16px;
     fill: currentColor;
+}
+
+/* hero section */
+
+.hero-section {
+    display: grid;
+    grid-template-columns: 1.1fr 0.90fr;
+    gap: 30px;
+    width: min(1380px, calc(100% - 64px));
+    min-height: 640px;
+    margin: 30px auto 0;
+}
+
+.hero-image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px 42px;
+    border: 3px solid var(--ink);
+    background: var(--white);
+    box-shadow: 10px 10px 0 var(--ink);
+}
+
+.hero-text h1 {
+    font-size: clamp(82px, 8.2vw, 132px);
+    font-weight: 700;
+    line-height: 0.84;
+    letter-spacing: -0.06em;
+}
+
+.hero-text span {
+    color: var(--orange);
+}
+
+.hero-text p {
+    max-width: 525px;
+    margin-top: 26px;
+    margin-bottom: 32px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.hero_button-orange {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    border: 3px solid var(--ink);
+    padding: 10px 25px;
+    background: var(--orange);
+    color: var(--white);
+    box-shadow: 6px 6px 0 var(--ink);
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    transition: transform 150ms, box-shadow 150ms;
+}
+
+.hero_button-orange:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--ink);
+}
+
+.hero-image {
+    position: relative;
+    overflow: hidden;
+    border: 3px solid var(--ink);
+    background: #222;
+    box-shadow: 10px 10px 0 var(--orange);
+}
+
+.hero-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(244,81,35,0.04);
 }
