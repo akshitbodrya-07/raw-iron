@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap");
+
+:root {
+    --ink: #171717;
+    --paper: #f1f0ec;
+    --white: #ffffff;
+    --orange: #f45123;
+    --line: #282828;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: 
+    linear-gradient(rgba(20,20,20,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20,20,20,0.025) 1px, transparent 1px)
+    var(--paper);
+    background-size: 24px 24px;
+    color: var(--ink);
+    font-family: "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+/* header */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 75px;
+    width: min(1380px, calc(100% - 64px));
+    margin: 20px auto 0;
+    padding: 0 16px 0 22px;
+    border: 2px solid var(--line);
+    background: var(--paper);
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--orange);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
+    height: 100%;
+}
+
+.navbar a {
+    position: relative;
+    padding-top: 27px;
+    padding-bottom: 24px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;  
+}
+
+.navbar a:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 17px;
+    height: 3px;
+    background: var(--orange);
+}
+
+.header-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    height: 40px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border: 0;
+    background: var(--ink);
+    color: var(--white);
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.cart-button svg {
+    width: 16px;
+    fill: currentColor;
+}
