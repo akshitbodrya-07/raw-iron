@@ -219,13 +219,13 @@ img {
 
 /* section-schedule */
 
-.schedule-section {
+.schedule-section, .crew-section {
     width: min(1380px, calc(100% - 64px));
     margin: 0 auto;
     padding-top: 110px;
 }
 
-.section-title {
+.section-title, .crew_section-title{
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
@@ -286,6 +286,7 @@ img {
     padding: 15px;
     min-height: 100px;
     border-top: 1px solid var(--ink);
+    transition: transform 300ms, box-shadow 300ms, background 300ms, color 300ms;
 }
 
 .slot time {
@@ -305,10 +306,115 @@ img {
 }
 
 .slot:hover {
+    z-index: 1;
+    transform: translate(-3px, -3px);
     background: var(--orange);
     color: var(--white);
+    box-shadow: 4px 4px 0 var(--ink);
 }
 
 .slot:hover time {
     color: var(--white);
+}
+
+/* CREW */
+
+.crew_section-title span {
+    color: var(--orange);
+    padding-bottom: 8px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.crew_section-title h1 {
+    font-size: clamp(40px, 5vw, 68px);
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.title-line {
+    width: 100%;
+    margin-bottom: 7px;
+    border-bottom: 2px solid var(--ink);
+}
+
+/* CREW CARD */
+
+.crew-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.crew-card {
+    border: 2px solid var(--ink);
+    background: var(--white);
+    box-shadow: 5px 5px 0 #575757;
+    transition: transform 300ms, box-shadow 300ms, background 300ms, color 300ms;
+}
+
+.crew-card img {
+    height: 360px;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.15);
+}
+
+.crew-info {
+    position: relative;
+    min-height: 184px;
+    padding: 24px;
+    border-top: 2px solid var(--ink);
+}
+
+.crew-num {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    color: #aaa;
+    font-family: "Oswald", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.crew-info h3 {
+    max-width: 80%;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.crew-info strong {
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 17px;
+    font-family: "Oswald", sans-serif;
+    font-size: 10px;
+    color: var(--orange);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.crew-info p {
+    max-width: 340px;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.crew-card:hover{
+    transform: translate(3px, 3px);
+    background: var(--ink);
+    color: var(--white);
+    box-shadow: 5px 5px 0 var(--orange);
+}
+
+.crew-card:hover img {
+  filter: none;
+}
+
+.crew-section {
+  padding-bottom: 104px;
 }
