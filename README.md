@@ -2,7 +2,7 @@
 
 A one-page website for a gym and fitness studio, built with plain **HTML5 and CSS3**. No frameworks, no JavaScript.
 
-**Live site:** raw-iron-beryl.vercel.app
+**Live site:** https://raw-iron-git-main-akshitbodrya-07s-projects.vercel.app/
 
 ## About the project
 
