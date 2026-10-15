@@ -1,13 +1,31 @@
-
+import { useState } from 'react'
 import classes from '../data/classes'
 import SectionTitle from './SectionTitle'
 
 const days = ['MON', 'TUE', 'WED', 'THU', 'FRI']
 
+const filters = ['ALL', 'STRENGTH', 'CARDIO', 'COMBAT', 'MOBILITY']
+
+
 const Schedule = () => {
+
+    const [currentFilter, setCurrentFilter] = useState('ALL')
+
   return (
     <section className='mx-auto w-[calc(100%-32px)] pt-[110px] md:w-[min(1380px,calc(100%-64px))]'>
         <SectionTitle label="THIS WEEK" title="WEEKLY SCHEDULE" />
+
+        <div className='mb-6 flex flex-wrap gap-2'>
+            {filters.map((filter) => (
+                <button
+                key={filter}
+                onClick={() => setCurrentFilter(filter)}
+                className={`border-2 border-ink px-4 py-2 text-[10px] font-extrabold tracking-[0.08em] transition-colors duration-300 ${currentFilter == filter ? 'bg-ink text-white' : 'bg-white hover:bg-orange hover:text-white'}`}
+                >
+                    {filter}
+                </button>
+            ))}
+        </div>
 
         <div className='grid border-2 border-ink bg-white md:grid-cols-3 lg:grid-cols-5'>
             {days.map((day) => (
@@ -15,7 +33,7 @@ const Schedule = () => {
                     <h3 className="bg-ink p-3.5 text-center text-[15px] text-white">{day}</h3>
 
                     {classes
-                    .filter((item) => item.day === day)
+                    .filter((item) => item.day === day && (currentFilter === 'ALL' || item.type === currentFilter))
                     .map((item) => (
                         <div 
                         key={item.id}
