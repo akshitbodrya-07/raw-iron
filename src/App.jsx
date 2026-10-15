@@ -4,6 +4,7 @@
 // I kept the [px] values on purpose so they match my Assignment 1 CSS exactly.
 
 
+import Crew from './components/Crew'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Schedule from './components/Schedule'
@@ -15,6 +16,7 @@ const App = () => {
       <main>
         <Hero />
         <Schedule />
+        <Crew />
       </main>
     </>
   )
