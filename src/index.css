@@ -9,3 +9,23 @@
   --font-display: "Oswald", sans-serif;
   --font-body: "Inter", sans-serif;
 }
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    background-image: 
+      linear-gradient(rgba(20, 20, 20, 0.025) 1px, transparent 1.5px),
+      linear-gradient(90deg, rgba(20, 20, 20, 0.025) 1px, transparent 1.5px);
+    background-size: 24px 24px;
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  h1,h2,h3 {
+    font-family: var(--font-display);
+  }
+}
