@@ -10,9 +10,9 @@ const Hero = () => {
 
         {/* left part of hero section */}
 
-        <div className="relative flex flex-col items-start justify-center border-[3px] border-ink bg-white px-[22px] py-9 shadow-[10px_10px_0_var(--color-ink)] md:py-12 md:pr-24 md:pl-[42px]">
+        <div className="relative flex flex-col items-start justify-center border-[3px] border-ink bg-white px-[22px] py-9 shadow-[10px_10px_0_var(--color-ink)] md:py-12 lg:pr-24 md:pl-[42px]">
 
-            <div className="absolute top-1/2 right-8 hidden -translate-y-1/2 rotate-180 items-center gap-8 whitespace-nowrap [writing-mode:vertical-rl] md:flex">
+            <div className="absolute top-1/2 right-8 hidden -translate-y-1/2 rotate-180 items-center gap-8 whitespace-nowrap [writing-mode:vertical-rl] lg:flex">
 
             {heroStats.map((stat) => (
                 <p key={stat.label} className="font-display text-xl font-bold leading-none tracking-[0.05em]">

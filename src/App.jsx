@@ -6,6 +6,7 @@
 
 import Header from './components/Header'
 import Hero from './components/Hero'
+import Schedule from './components/Schedule'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Header />
       <main>
         <Hero />
+        <Schedule />
       </main>
     </>
   )
