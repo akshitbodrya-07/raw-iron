@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import classes from '../data/classes'
 import SectionTitle from './SectionTitle'
+import SaveToggle from './SaveToggle'
 
 const days = ['MON', 'TUE', 'WED', 'THU', 'FRI']
 
@@ -10,6 +11,16 @@ const filters = ['ALL', 'STRENGTH', 'CARDIO', 'COMBAT', 'MOBILITY']
 const Schedule = () => {
 
     const [currentFilter, setCurrentFilter] = useState('ALL')
+
+    const [savedIds, setSavedIds] = useState([])
+
+    const toggleSaved = (id) => {
+        if (savedIds.includes(id)) {
+            setSavedIds(savedIds.filter((savedId) => savedId !== id))
+        } else {
+            setSavedIds([...savedIds, id])
+        }   
+    }
 
   return (
     <section className='mx-auto w-[calc(100%-32px)] pt-[110px] md:w-[min(1380px,calc(100%-64px))]'>
@@ -37,10 +48,11 @@ const Schedule = () => {
                     .map((item) => (
                         <div 
                         key={item.id}
-                        className='min-h-[100px] border-t border-ink p-[15px] transition duration-300 hover:-translate-x-[3px] hover:-translate-y-[3px] hover:bg-orange hover:text-white hover:shadow-[4px_4px_0_var(--color-ink)]'
+                        className='group relative min-h-[100px] border-t border-ink p-[15px] transition duration-300 hover:-translate-x-[3px] hover:-translate-y-[3px] hover:bg-orange hover:text-white hover:shadow-[4px_4px_0_var(--color-ink)]'
                         >
                             <time className='mb-1.5 block text-[9px] tracking-[0.07em]'>{item.time}</time>
                             <strong className='block font-display text-sm font-bold tracking-[-0.02em]'>{item.name}</strong>
+                            <SaveToggle saved={savedIds.includes(item.id)} onToggle={() => toggleSaved(item.id)} />
                             
                         </div>    
                     ))}
