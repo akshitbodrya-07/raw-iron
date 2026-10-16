@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import Plans from './components/Plans'
 import Promo from './components/Promo'
 import Schedule from './components/Schedule'
+import Stats from './components/Stats'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Crew />
         <Promo />
         <Plans />
+        <Stats />
       </main>
       <Footer />
     </>
