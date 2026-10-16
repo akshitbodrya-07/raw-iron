@@ -1,6 +1,7 @@
 import Crew from './components/Crew'
 import Header from './components/Header'
 import Hero from './components/Hero'
+import Plans from './components/Plans'
 import Promo from './components/Promo'
 import Schedule from './components/Schedule'
 
@@ -13,6 +14,7 @@ const App = () => {
         <Schedule />
         <Crew />
         <Promo />
+        <Plans />
       </main>
     </>
   )
