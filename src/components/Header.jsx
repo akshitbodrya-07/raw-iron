@@ -1,5 +1,5 @@
 const navLinks = [
-    {label: 'TRAIN', href: '#train'},
+    { label: 'TRAIN', href: '#train' },
     { label: 'SUPPLEMENTS', href: '#supplements' },
     { label: 'ABOUT', href: '#crew' },
     { label: 'CONTACT', href: '#contact' },

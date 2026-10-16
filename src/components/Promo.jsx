@@ -1,7 +1,7 @@
 
 function Promo() {
   return (
-    <section id="supplement" className="mx-auto grid w-[calc(100%-32px)] bg-ink text-white md:w-[min(1380px,calc(100%-64px))] lg:min-h-[400px] lg:grid-cols-[1.1fr_0.9fr]">
+    <section id="supplements" className="mx-auto grid w-[calc(100%-32px)] bg-ink text-white md:w-[min(1380px,calc(100%-64px))] lg:min-h-[400px] lg:grid-cols-[1.1fr_0.9fr]">
         <div className="flex flex-col items-start justify-center gap-2.5 px-6 py-10 md:p-[60px]">
             <span className="mb-4 text-[10px] font-extrabold tracking-[0.18em] text-orange">FUEL THE WORK</span>
             <h2 className="text-5xl font-bold leading-[0.9] tracking-[-0.04em] md:text-[clamp(52px,6vw,82px)]">CLEAN FUEL.

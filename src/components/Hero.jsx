@@ -6,7 +6,7 @@ const heroStats = [
 
 const Hero = () => {
   return (
-    <section id="#train" className="mx-auto mt-[30px] grid w-[calc(100%-32px)] gap-[30px] md:w-[min(1380px,calc(100%-64px))] lg:min-h-[640px] lg:grid-cols-[1.1fr_0.9fr]">
+    <section id="train" className="mx-auto mt-[30px] grid w-[calc(100%-32px)] gap-[30px] md:w-[min(1380px,calc(100%-64px))] lg:min-h-[640px] lg:grid-cols-[1.1fr_0.9fr]">
 
         {/* left part of hero section */}
 
