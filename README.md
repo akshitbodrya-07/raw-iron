@@ -6,6 +6,9 @@ This is version 2 of my RAW:IRON project. Version 1 was plain HTML and CSS. For 
 
 **Live site:** https://raw-iron-git-main-akshitbodrya-07s-projects.vercel.app/
 
+<img width="1440" height="900" alt="hero" src="https://github.com/user-attachments/assets/a6a825ae-fe40-4a44-a6bb-56e538a4567f" />
+
+
 ## Features
 
 - **Class filter:** buttons above the weekly schedule (ALL, STRENGTH, CARDIO, COMBAT, MOBILITY) show only the classes of that type. Built with `useState`.
@@ -14,6 +17,9 @@ This is version 2 of my RAW:IRON project. Version 1 was plain HTML and CSS. For 
 - **Mobile first:** designed for phones first, then adjusted for tablet (`md:`) and desktop (`lg:`). No horizontal scroll at any screen size.
 - **Working navigation:** the sticky header links jump to each section.
 - **Hover effects** on schedule slots, coach cards, buttons and links.
+
+- <img width="1376" height="460" alt="schedule-filter" src="https://github.com/user-attachments/assets/27d8d569-cb61-443a-b945-8c279e655d2e" />
+
 
 ## Built with
 
@@ -101,6 +107,11 @@ raw-iron/
 4. Open the link it shows (usually http://localhost:5173).
 
 To make the final build, run `npm run build`. The finished site goes into the `dist` folder.
+
+## Screenshots
+
+<img width="1440" height="4631" alt="desktop-full" src="https://github.com/user-attachments/assets/a9772ff3-1cc9-45fc-a37d-c8f70813895d" />
+
 
 ## What I learned
 
