@@ -1,0 +1,27 @@
+DROP TABLE IF EXISTS classes;
+DROP TABLE IF EXISTS crew;
+DROP TABLE IF EXISTS plans;
+
+CREATE TABLE classes (
+  id SERIAL PRIMARY KEY,
+  day TEXT NOT NULL,
+  time TEXT NOT NULL,
+  name TEXT NOT NULL,
+  type TEXT NOT NULL
+);
+
+CREATE TABLE crew (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  role TEXT NOT NULL,
+  bio TEXT NOT NULL,
+  image TEXT NOT NULL
+);
+
+CREATE TABLE plans (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  price INTEGER NOT NULL,
+  features TEXT[] NOT NULL,
+  popular BOOLEAN NOT NULL DEFAULT false
+);
