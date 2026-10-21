@@ -12,9 +12,19 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' })
 })
 
-app.get('/api/db-test', async (req, res) => {
-  const result = await pool.query("SELECT NOW()")
-  res.json(result.rows[0])
+app.get('/api/classes', async (req, res) => {
+  const result = await pool.query('SELECT * FROM classes ORDER BY id')
+  res.json(result.rows)
+})
+
+app.get('/api/crew', async (req, res) => {
+  const result = await pool.query('SELECT * FROM crew ORDER BY id')
+  res.json(result.rows)
+})
+
+app.get('/api/plans', async (req, res) => {
+  const result = await pool.query('SELECT * FROM plans ORDER BY id')
+  res.json(result.rows)
 })
 
 app.listen(port, () => {
