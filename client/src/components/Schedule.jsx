@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import classes from '../data/classes'
+import { useState, useEffect } from 'react'
 import SectionTitle from './SectionTitle'
 import SaveToggle from './SaveToggle'
 
@@ -13,6 +12,14 @@ const Schedule = () => {
     const [currentFilter, setCurrentFilter] = useState('ALL')
 
     const [savedIds, setSavedIds] = useState([])
+
+    const [classes, setClasses] = useState([])
+
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/api/classes`)
+        .then((response) => response.json())
+        .then((data) => setClasses(data))
+    }, [])
 
     const toggleSaved = (id) => {
         if (savedIds.includes(id)) {
