@@ -1,8 +1,17 @@
 
-import plans from '../data/plans'
+import { useState, useEffect } from 'react'
 import SectionTitle from './SectionTitle'
 
 const Plans = () => {
+
+    const [plans, setPlans] = useState([])
+
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/api/plans`)
+        .then((response) => response.json())
+        .then((data) => setPlans(data))
+    }, [])
+    
   return (
     <section id='plans' className='mx-auto mb-[110px] w-[calc(100%-32px)] pt-[110px] md:w-[min(1380px,calc(100%-64px))]'>
         <SectionTitle label="MEMBERSHIP" title="CHOOSE YOUR WEAPON"/>

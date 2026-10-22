@@ -1,8 +1,17 @@
-import crew from "../data/crew"
+import { useState, useEffect } from "react"
 import SectionTitle from "./SectionTitle"
 
 
 const Crew = () => {
+
+    const [crew, setCrew] = useState([])
+
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/api/crew`)
+        .then((response) => response.json())
+        .then((data) => setCrew(data))
+    }, [])
+    
   return (
     <section id="crew" className="mx-auto w-[calc(100%-32px)] pt-[110px] pb-[104px] md:w-[min(1380px,calc(100%-64px))]">
         <SectionTitle label="MEET YOUR" title="THE CREW" />
