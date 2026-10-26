@@ -35,6 +35,11 @@ app.get('/api/plans', async (req, res) => {
   res.json(result.rows)
 })
 
+app.get('/api/products', async (req, res) => {
+  const result = await pool.query('SELECT * FROM products ORDER BY id')
+  res.json(result.rows)
+})
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
 })

@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS classes;
 DROP TABLE IF EXISTS crew;
 DROP TABLE IF EXISTS plans;
+DROP TABLE IF EXISTS products;
 
 CREATE TABLE classes (
   id SERIAL PRIMARY KEY,
@@ -24,4 +25,13 @@ CREATE TABLE plans (
   price INTEGER NOT NULL,
   features TEXT[] NOT NULL,
   popular BOOLEAN NOT NULL DEFAULT false
+);
+
+CREATE TABLE products (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  category TEXT NOT NULL,
+  price INTEGER NOT NULL,
+  description TEXT NOT NULL,
+  image TEXT NOT NULL
 );
