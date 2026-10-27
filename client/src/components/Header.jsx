@@ -9,7 +9,7 @@ const navLinks = [
     { label: 'CONTACT', href: '#contact' },
 ]
 
-const Header = () => {
+const Header = ({ cartCount, onCartClick }) => {
 
     const { data: session } = authClient.useSession()
     const [showForm, setShowForm] = useState(false)
@@ -47,9 +47,9 @@ const Header = () => {
                 </button>
             )}
 
-            <a href="#plans" className="flex h-10 items-center bg-ink px-5 text-[11px] font-extrabold tracking-[0.08em] text-white transition-colors duration-300 hover:bg-orange">
-            JOIN US
-            </a>
+            <button onClick={onCartClick} className="flex h-10 items-center bg-ink px-5 text-[11px] font-extrabold tracking-[0.08em] text-white transition-colors duration-300 hover:bg-orange">
+                CART ({cartCount})
+            </button>
         </div>
 
         {showForm && !session && (
