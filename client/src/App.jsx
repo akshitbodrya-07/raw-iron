@@ -76,6 +76,9 @@ const App = () => {
 
     if (data.url) {
       window.location.href = data.url
+    } else {
+      setToast(data.error || 'SOMETHING WENT WRONG')
+      setTimeout(() => setToast(''), 2200)
     }
   }
 

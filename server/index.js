@@ -16,6 +16,30 @@ app.use(cors({
 
 app.all('/api/auth/*splat', toNodeHandler(auth))
 
+app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+  const signature = req.headers['stripe-signature']
+  let event
+
+  try {
+    event = stripe.webhooks.constructEvent(req.body, signature, process.env.STRIPE_WEBHOOK_SECRET)
+  } catch (error) {
+    console.error('Webhook signature failed:', error.message)
+    return res.status(400).send('Invalid signature')
+  }
+
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object
+    const orderId = session.metadata.orderId
+
+    if (session.payment_status === 'paid') {
+      await pool.query("UPDATE orders SET status = 'paid' WHERE id = $1", [orderId])
+      console.log(`Order ${orderId} is paid`)
+    }
+  }
+
+  res.json({ received: true })
+})
+
 app.use(express.json())
 
 app.get('/api/health', (req, res) => {
@@ -43,7 +67,7 @@ app.get('/api/products', async (req, res) => {
 })
 
 app.post('/api/checkout', requireAuth, async(req, res) => {
-  const item = req.body.items
+  const items = req.body.items
 
   if(!Array.isArray(items) || items.length == 0) {
     return res.status(400).json({error: "Your cart is empty"})
