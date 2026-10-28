@@ -3,6 +3,9 @@ import cors from 'cors'
 import pool from './db.js'
 import { toNodeHandler } from 'better-auth/node'
 import { auth } from './auth.js'
+import stripe from './stripe.js'
+import requireAuth from './requireAuth.js'
+import { string, success } from 'better-auth'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -38,6 +41,59 @@ app.get('/api/plans', async (req, res) => {
 app.get('/api/products', async (req, res) => {
   const result = await pool.query('SELECT * FROM products ORDER BY id')
   res.json(result.rows)
+})
+
+app.post('/api/checkout', requireAuth, async(req, res) => {
+  const item = req.body.items
+
+  if(!Array.isArray(items) || items.length == 0) {
+    return res.status(400).json({error: "Your cart is empty"})
+  }
+
+  const ids = items.map((item) => Number(item.id))
+  const result = await pool.query("SELECT * FROM products WHERE id = ANY($1)", [ids])
+  const products = result.rows
+
+  let total = 0
+  const lines = []
+
+  for(const item of items) {
+    const product = products.find((p) => p.id === Number(item.id))
+    const quantity = Number(item.quantity)
+
+    if (!product || !Number.isInteger(quantity) || quantity < 1) {
+      return res.status(400).json({ error: 'Something is wrong with your cart' })
+    }
+
+    total = total + product.price * quantity
+    lines.push({ product, quantity })
+  }
+
+  const order = await pool.query("INSERT INTO orders (user_id, total) VALUES ($1, $2) RETURNING id", [req.user.id, total])
+  const orderId = order.rows[0].id
+
+  for (const line of lines) {
+    await pool.query("INSERT INTO order_items (order_id, product_id, quantity, unit_price) VALUES ($1, $2, $3, $4)", [orderId, line.product.id, line.quantity, line.product.price])
+  }
+
+  const session = await stripe.checkout.sessions.create({
+    mode: 'payment',
+    line_items: lines.map((line) => ({
+      price_data: {
+        currency: 'eur',
+        product_data: { name: line.product.name },
+        unit_amount: line.product.price * 100,
+      },
+      quantity: line.quantity,
+    })),
+    metadata: { orderId: String(orderId) },
+    success_url: `${process.env.CLIENT_URL}/success?order=${orderId}`,
+    cancel_url: `${process.env.CLIENT_URL}/#supplements`
+  })
+
+  await pool.query("UPDATE orders SET stripe_session_id = $1 WHERE id = $2", [session.id, orderId])
+
+  res.json({ url: session.url })
 })
 
 app.listen(port, () => {
