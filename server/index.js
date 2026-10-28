@@ -5,7 +5,6 @@ import { toNodeHandler } from 'better-auth/node'
 import { auth } from './auth.js'
 import stripe from './stripe.js'
 import requireAuth from './requireAuth.js'
-import { string, success } from 'better-auth'
 
 const app = express()
 const port = process.env.PORT || 3000

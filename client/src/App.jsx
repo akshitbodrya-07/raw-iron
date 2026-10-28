@@ -56,6 +56,29 @@ const App = () => {
     setCart(cart.filter((item) => item.id !== id))
   }
 
+  const handleCheckout = async () => {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/checkout`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items: cart.map((item) => ({ id: item.id, quantity: item.quantity })),
+      }),
+    })
+
+    const data = await response.json()
+
+    if (response.status === 401) {
+      setToast('PLEASE SIGN IN TO CHECK OUT')
+      setTimeout(() => setToast(''), 2200)
+      return
+    }
+
+    if (data.url) {
+      window.location.href = data.url
+    }
+  }
+
   const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0) 
 
   return (
@@ -81,6 +104,7 @@ const App = () => {
           onClose={() => setCartOpen(false)}
           onChange={changeQuantity}
           onRemove={removeFromCart}
+          onCheckout={handleCheckout}
         />
       )}
       <div className={`fixed bottom-[18px] left-[18px] right-[18px] z-[100] border-2 border-ink bg-orange px-5 py-4 text-center font-display text-xs font-bold tracking-[0.07em] text-white shadow-[5px_5px_0_#171717] transition duration-200 md:left-auto md:right-7 md:bottom-7 ${toast ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-5 opacity-0'}`}>

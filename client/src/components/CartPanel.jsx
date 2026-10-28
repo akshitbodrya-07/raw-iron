@@ -1,4 +1,4 @@
-const CartPanel = ({ cart, total, onClose, onChange, onRemove }) => {
+const CartPanel = ({ cart, total, onClose, onChange, onRemove, onCheckout }) => {
   return (
     <>
       <div onClick={onClose} className="fixed inset-0 z-[60] bg-ink/50"></div>
@@ -50,6 +50,7 @@ const CartPanel = ({ cart, total, onClose, onChange, onRemove }) => {
             <span>€{total}.00</span>
           </div>
           <button
+            onClick={onCheckout}
             disabled={cart.length === 0}
             className="w-full border-2 border-ink bg-orange py-4 text-xs font-extrabold text-white shadow-[4px_4px_0_#171717] disabled:opacity-40"
           >
