@@ -12,6 +12,7 @@ import Stats from './components/Stats'
 import Ticker from './components/Ticker'
 import { useState, useEffect } from 'react'
 import CartPanel from './components/CartPanel'
+import Success from './components/Success'
 
 const App = () => {
 
@@ -83,6 +84,16 @@ const App = () => {
   }
 
   const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0) 
+
+  if (window.location.pathname === '/success') {
+    return (
+      <>
+        <Header cartCount={cartCount} onCartClick={() => setCartOpen(true)} />
+        <Success onPaid={() => setCart([])} />
+        <Footer />
+      </>
+    )
+  }
 
   return (
     <>
